@@ -1,20 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-
-    <h:head>
-        <title>PrimeFaces Test</title>
-        <h:outputScript name="test.js" />
-    </h:head>
-    <h:body>
-
-        <h1>#{testView.string}</h1>
-        <h:form id="frmTest">
-            
-        </h:form>
-
-    </h:body>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:p="http://primefaces.org/ui"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<h:head>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
+  <title>PrimeFaces Test</title>
+  <h:outputScript name="test.js" />
+</h:head>
+<h:body>
+  <h1>#{testView.string}</h1>
+  <h:form id="frmTest">
+    <p:dataTable
+      value="#{testView.values}"
+      var="value"
+      draggableColumns="true"
+    >
+      <p:column
+        headerText="draggable - you can not filter me with touch"
+        filterBy="#{value}"
+      >
+        <h:outputText value="#{value}">
+        </h:outputText>
+      </p:column>
+      <p:column
+        draggable="false"
+        headerText="non draggable - you can filter me with touch"
+        filterBy="#{value}"
+      >
+        <h:outputText value="#{value}">
+        </h:outputText>
+      </p:column>
+    </p:dataTable>
+  </h:form>
+</h:body>
 </html>
